@@ -1,5 +1,7 @@
+// src/app/teams/[id]/page.js
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ArticleCard from "@/src/components/Articles/ArticleCard";
 
 // Mock data for teams
@@ -11,7 +13,7 @@ const teams = [
     record: "48-20",
     conference: "West",
     division: "Northwest",
-    logo: "/placeholder-team.jpg",
+    logo: "/images/teams/thunder.jpg",
     description:
       "The Oklahoma City Thunder have been a surprise contender this season, with their young core developing faster than expected. Led by their dynamic guard play and improved defense, they have established themselves as one of the top teams in the Western Conference.",
   },
@@ -22,7 +24,7 @@ const teams = [
     record: "42-26",
     conference: "West",
     division: "Southwest",
-    logo: "/placeholder-team.jpg",
+    logo: "/images/teams/grizzlies.jpg",
     description:
       'The Memphis Grizzlies continue to embody their "Grit and Grind" mentality, combining physical defense with explosive offense. Despite dealing with injuries to key players, they remain a formidable opponent and are positioned for another playoff run.',
   },
@@ -36,7 +38,7 @@ const relatedArticles = [
     title: "Thunder's Rise: Breaking Down Their Success",
     excerpt:
       "Analyzing how the Thunder have exceeded expectations this season...",
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-1.jpg",
     category: "Analysis",
     author: "James Thompson",
     date: "April 14, 2025",
@@ -46,7 +48,7 @@ const relatedArticles = [
     title: "Key Players to Watch in Upcoming Matchups",
     excerpt:
       "A look at the stars who will determine the outcome of crucial games...",
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-2.jpg",
     category: "Preview",
     author: "Sarah Chen",
     date: "April 12, 2025",
@@ -55,7 +57,7 @@ const relatedArticles = [
     id: 3,
     title: "Playoff Scenarios: What Each Win Means",
     excerpt: "Breaking down the playoff implications of upcoming games...",
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-3.jpg",
     category: "Playoffs",
     author: "Marcus Johnson",
     date: "April 10, 2025",
@@ -84,8 +86,13 @@ const TeamDetailPage = ({ params }) => {
         <div className="container mx-auto px-5 sm:px-10">
           <div className="flex flex-col md:flex-row md:items-center">
             <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-              <div className="w-48 h-48 bg-gray-200 rounded-full flex items-center justify-center">
-                <span className="text-gray-500 text-xl">Team Logo</span>
+              <div className="relative w-48 h-48 rounded-full overflow-hidden">
+                <Image
+                  src={team.logo}
+                  alt={`${team.fullName} logo`}
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
 
@@ -154,8 +161,13 @@ const TeamDetailPage = ({ params }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white dark:bg-darkBlue rounded-lg overflow-hidden shadow-md">
-              <div className="h-64 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Player Photo</span>
+              <div className="relative h-64 w-full">
+                <Image
+                  src="/images/player-1.jpg"
+                  alt="Player Name"
+                  fill
+                  className="object-cover object-top"
+                />
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-bold mb-1">Player Name</h3>
@@ -186,8 +198,13 @@ const TeamDetailPage = ({ params }) => {
             </div>
 
             <div className="bg-white dark:bg-darkBlue rounded-lg overflow-hidden shadow-md">
-              <div className="h-64 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Player Photo</span>
+              <div className="relative h-64 w-full">
+                <Image
+                  src="/images/player-2.jpg"
+                  alt="Player Name"
+                  fill
+                  className="object-cover object-top"
+                />
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-bold mb-1">Player Name</h3>
@@ -218,8 +235,13 @@ const TeamDetailPage = ({ params }) => {
             </div>
 
             <div className="bg-white dark:bg-darkBlue rounded-lg overflow-hidden shadow-md">
-              <div className="h-64 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Player Photo</span>
+              <div className="relative h-64 w-full">
+                <Image
+                  src="/images/player-3.jpg"
+                  alt="Player Name"
+                  fill
+                  className="object-cover object-top"
+                />
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-bold mb-1">Player Name</h3>

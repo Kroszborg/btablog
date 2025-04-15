@@ -1,100 +1,9 @@
+// src/app/articles/page.js
 import React from "react";
 import ArticleCard from "@/src/components/Articles/ArticleCard";
 import Link from "next/link";
-
-// Mock data for articles
-const mockArticles = [
-  {
-    id: 1,
-    title: "Understanding the Trade Deadline: What to Expect",
-    excerpt:
-      "A comprehensive guide to the NBA trade deadline and what it means for teams...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Analysis",
-    author: "Adrian Jones",
-    date: "April 12, 2025",
-  },
-  {
-    id: 2,
-    title: "Player Spotlight: Rising Stars of the Season",
-    excerpt:
-      "Breaking down the performance of this season's breakout players...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Player Analysis",
-    author: "Maria Rodriguez",
-    date: "April 10, 2025",
-  },
-  {
-    id: 3,
-    title: "Playoff Picture: Who's In, Who's Out",
-    excerpt:
-      "Analyzing team standings and playoff scenarios as the regular season winds down...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Playoffs",
-    author: "Derek Wilson",
-    date: "April 8, 2025",
-  },
-  {
-    id: 4,
-    title: "Deep Dive: Evolution of the Modern NBA Offense",
-    excerpt:
-      "Exploring how offensive strategies have transformed over the past decade...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Analysis",
-    author: "Sarah Chen",
-    date: "April 6, 2025",
-  },
-  {
-    id: 5,
-    title: "Injury Updates: Impact on Playoff Contenders",
-    excerpt:
-      "Latest updates on key player injuries and how they affect championship contenders...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "News",
-    author: "Marcus Johnson",
-    date: "April 5, 2025",
-  },
-  {
-    id: 6,
-    title: "Coach's Corner: Tactical Adjustments in Crunch Time",
-    excerpt:
-      "Breaking down the strategic decisions coaches make in close game situations...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Coaching",
-    author: "James Thompson",
-    date: "April 3, 2025",
-  },
-  {
-    id: 7,
-    title: "Draft Watch: Top Prospects to Watch",
-    excerpt:
-      "Scouting report on the top college and international prospects for the upcoming NBA draft...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Draft",
-    author: "Adrian Jones",
-    date: "April 1, 2025",
-  },
-  {
-    id: 8,
-    title: "Analytics Corner: Advanced Stats Explained",
-    excerpt:
-      "A beginner-friendly guide to understanding modern basketball analytics...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Analytics",
-    author: "Maria Rodriguez",
-    date: "March 30, 2025",
-  },
-  {
-    id: 9,
-    title: "The Art of Defense: Lockdown Defenders",
-    excerpt:
-      "Highlighting the league's best defensive players and their impact on the game...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Defense",
-    author: "Derek Wilson",
-    date: "March 28, 2025",
-  },
-];
+import Image from "next/image";
+import { mockArticles } from "@/src/app/data/mockdata";
 
 // Categories for filtering
 const categories = [
@@ -184,8 +93,13 @@ const ArticlesPage = () => {
         <div className="container mx-auto px-5 sm:px-10">
           <div className="bg-white dark:bg-darkBlue rounded-lg overflow-hidden shadow-lg">
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="h-64 md:h-auto bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500 text-xl">Featured Image</span>
+              <div className="relative h-64 md:h-auto">
+                <Image
+                  src={mockArticles[0].imageUrl}
+                  alt={mockArticles[0].title}
+                  fill
+                  className="object-cover object-center"
+                />
               </div>
 
               <div className="p-6 md:p-10 flex flex-col">
@@ -200,23 +114,21 @@ const ArticlesPage = () => {
                     href="/articles/1"
                     className="hover:text-accent dark:hover:text-accentDark transition-colors"
                   >
-                    Understanding the Trade Deadline: What to Expect
+                    {mockArticles[0].title}
                   </Link>
                 </h2>
 
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  A comprehensive guide to the NBA trade deadline and what it
-                  means for teams across the league. We break down potential
-                  moves, cap implications, and how trades might affect the
-                  playoff race.
+                  {mockArticles[0].excerpt} We break down potential moves, cap
+                  implications, and how trades might affect the playoff race.
                 </p>
 
                 <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6">
                   <div className="mr-4">
-                    <span>By Adrian Jones</span>
+                    <span>By {mockArticles[0].author}</span>
                   </div>
                   <div>
-                    <span>April 12, 2025</span>
+                    <span>{mockArticles[0].date}</span>
                   </div>
                 </div>
 

@@ -1,5 +1,7 @@
+// src/components/Teams/TeamOfTheWeek.js
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const TeamOfTheWeek = () => {
   return (
@@ -8,21 +10,27 @@ const TeamOfTheWeek = () => {
         <h2 className="text-3xl font-bold mb-8">Team of the Week</h2>
 
         <div className="bg-darkBlue rounded-lg overflow-hidden shadow-lg">
-          <div className="bg-gray-200 h-64 flex items-center justify-center">
-            <div className="text-gray-500 text-3xl">Team Logo</div>
+          <div className="relative h-64 w-full">
+            <Image
+              src="https://images.unsplash.com/photo-1613676023829-a881beec0a73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1649&q=80"
+              alt="Cleveland Cavaliers"
+              fill
+              className="object-cover object-center"
+            />
           </div>
 
           <div className="p-6">
-            <h3 className="text-2xl font-bold mb-2">Team Name</h3>
-            <p className="text-sm text-gray-400 mb-4">Record: 32-23</p>
+            <h3 className="text-2xl font-bold mb-2">Cleveland Cavaliers</h3>
+            <p className="text-sm text-gray-400 mb-4">Record: 47-21</p>
             <p className="mb-6">
-              Highlights from their recent games and key player performances.
-              The team has been on a winning streak, demonstrating excellent
-              teamwork and defensive strategies that have put them at the top of
-              their division.
+              The Cavaliers have been impressive this week, winning all four
+              games on their road trip. Donovan Mitchell averaged 28.5 points
+              while shooting 52% from the field, and the team's defense held
+              opponents to just 98 points per game. Their ball movement and team
+              chemistry have been off the charts.
             </p>
             <Link
-              href="/teams/1"
+              href="/teams/7"
               className="inline-block px-6 py-2 bg-accent text-light rounded-lg font-medium hover:bg-accentDark transition-colors"
             >
               View Team Profile

@@ -1,16 +1,23 @@
+// src/components/Home/HomeCoverSection.js
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const HomeCoverSection = () => {
   return (
     <section className="w-full min-h-[70vh] bg-dark text-light flex items-center relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-dark/90 z-10"></div>
 
-      {/* Replace with actual background image */}
-      <div
-        className="absolute inset-0 bg-[url('/placeholder-basketball.jpg')] bg-cover bg-center"
-        style={{ opacity: 0.6 }}
-      ></div>
+      {/* Basketball court background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80"
+          alt="Basketball court"
+          fill
+          className="object-cover object-center opacity-60"
+          priority
+        />
+      </div>
 
       <div className="container mx-auto px-5 sm:px-10 z-20 py-16">
         <div className="max-w-3xl">

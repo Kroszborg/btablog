@@ -1,5 +1,7 @@
+// src/app/articles/[id]/page.js
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ArticleCard from "@/src/components/Articles/ArticleCard";
 
 // Mock data for articles
@@ -34,7 +36,7 @@ const articles = [
       
       <p>The trade deadline represents both opportunity and risk for NBA teams. The right move can catapult a team into contention, while a miscalculation can set a franchise back years. As fans, we can only wait and see which teams make the boldest and smartest moves this season.</p>
     `,
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-1.jpg",
     category: "Analysis",
     author: "Adrian Jones",
     authorTitle: "Basketball Analyst | Expert on NBA Trades",
@@ -47,7 +49,7 @@ const articles = [
     excerpt:
       "Breaking down the performance of this season's breakout players...",
     content: "Full content for article 2 would go here...",
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-2.jpg",
     category: "Player Analysis",
     author: "Maria Rodriguez",
     authorTitle: "Player Development Specialist",
@@ -60,7 +62,7 @@ const articles = [
     excerpt:
       "Analyzing team standings and playoff scenarios as the regular season winds down...",
     content: "Full content for article 3 would go here...",
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-3.jpg",
     category: "Playoffs",
     author: "Derek Wilson",
     authorTitle: "Senior NBA Analyst",
@@ -76,7 +78,7 @@ const relatedArticles = [
     title: "Player Spotlight: Rising Stars of the Season",
     excerpt:
       "Breaking down the performance of this season's breakout players...",
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-2.jpg",
     category: "Player Analysis",
     author: "Maria Rodriguez",
     date: "April 10, 2025",
@@ -86,7 +88,7 @@ const relatedArticles = [
     title: "Playoff Picture: Who's In, Who's Out",
     excerpt:
       "Analyzing team standings and playoff scenarios as the regular season winds down...",
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-3.jpg",
     category: "Playoffs",
     author: "Derek Wilson",
     date: "April 8, 2025",
@@ -96,7 +98,7 @@ const relatedArticles = [
     title: "Deep Dive: Evolution of the Modern NBA Offense",
     excerpt:
       "Exploring how offensive strategies have transformed over the past decade...",
-    imageUrl: "/placeholder-article.jpg",
+    imageUrl: "/images/basketball-article-4.jpg",
     category: "Analysis",
     author: "Sarah Chen",
     date: "April 6, 2025",
@@ -175,8 +177,13 @@ const ArticleDetailPage = ({ params }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8">
               <div className="bg-white dark:bg-darkBlue rounded-lg shadow-md overflow-hidden">
-                <div className="h-96 bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-500 text-xl">Featured Image</span>
+                <div className="relative h-96 w-full">
+                  <Image
+                    src={article.imageUrl}
+                    alt={article.title}
+                    fill
+                    className="object-cover object-center"
+                  />
                 </div>
 
                 <div className="p-6 sm:p-10">
@@ -187,7 +194,14 @@ const ArticleDetailPage = ({ params }) => {
 
                   <div className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
                     <div className="flex items-center">
-                      <div className="w-16 h-16 bg-gray-300 rounded-full mr-4"></div>
+                      <div className="relative w-16 h-16 mr-4">
+                        <Image
+                          src="/images/author-profile.jpg"
+                          alt={article.author}
+                          fill
+                          className="rounded-full object-cover"
+                        />
+                      </div>
                       <div>
                         <h3 className="font-bold text-lg">{article.author}</h3>
                         <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -206,7 +220,14 @@ const ArticleDetailPage = ({ params }) => {
                 <div className="space-y-6">
                   <div className="bg-white dark:bg-darkBlue rounded-lg shadow-md p-6">
                     <div className="flex items-start">
-                      <div className="w-10 h-10 bg-gray-300 rounded-full mr-4"></div>
+                      <div className="relative w-10 h-10 mr-4">
+                        <Image
+                          src="/images/user-avatar-1.jpg"
+                          alt="User Avatar"
+                          fill
+                          className="rounded-full object-cover"
+                        />
+                      </div>
                       <div className="flex-1">
                         <div className="flex items-center mb-2">
                           <h4 className="font-semibold mr-2">User13842</h4>
@@ -224,7 +245,14 @@ const ArticleDetailPage = ({ params }) => {
 
                   <div className="bg-white dark:bg-darkBlue rounded-lg shadow-md p-6">
                     <div className="flex items-start">
-                      <div className="w-10 h-10 bg-gray-300 rounded-full mr-4"></div>
+                      <div className="relative w-10 h-10 mr-4">
+                        <Image
+                          src="/images/user-avatar-2.jpg"
+                          alt="User Avatar"
+                          fill
+                          className="rounded-full object-cover"
+                        />
+                      </div>
                       <div className="flex-1">
                         <div className="flex items-center mb-2">
                           <h4 className="font-semibold mr-2">User5678</h4>
@@ -241,7 +269,14 @@ const ArticleDetailPage = ({ params }) => {
 
                   <div className="bg-white dark:bg-darkBlue rounded-lg shadow-md p-6">
                     <div className="flex items-start">
-                      <div className="w-10 h-10 bg-gray-300 rounded-full mr-4"></div>
+                      <div className="relative w-10 h-10 mr-4">
+                        <Image
+                          src="/images/user-avatar-3.jpg"
+                          alt="User Avatar"
+                          fill
+                          className="rounded-full object-cover"
+                        />
+                      </div>
                       <div className="flex-1">
                         <div className="flex items-center mb-2">
                           <h4 className="font-semibold mr-2">User9012</h4>
@@ -295,6 +330,14 @@ const ArticleDetailPage = ({ params }) => {
                           className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0"
                         >
                           <Link href={`/articles/${relatedArticle.id}`}>
+                            <div className="relative w-full h-32 mb-3 rounded-lg overflow-hidden">
+                              <Image
+                                src={relatedArticle.imageUrl}
+                                alt={relatedArticle.title}
+                                fill
+                                className="object-cover object-center"
+                              />
+                            </div>
                             <h4 className="font-bold mb-2 hover:text-accent dark:hover:text-accentDark transition-colors">
                               {relatedArticle.title}
                             </h4>

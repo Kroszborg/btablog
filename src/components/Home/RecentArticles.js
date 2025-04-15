@@ -1,40 +1,8 @@
+// src/components/Home/RecentArticles.js
 import React from "react";
 import ArticleCard from "../Articles/ArticleCard";
 import Link from "next/link";
-
-// Mock data for articles
-const mockArticles = [
-  {
-    id: 1,
-    title: "Understanding the Trade Deadline: What to Expect",
-    excerpt:
-      "A comprehensive guide to the NBA trade deadline and what it means for teams...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Analysis",
-    author: "Adrian Jones",
-    date: "April 12, 2025",
-  },
-  {
-    id: 2,
-    title: "Player Spotlight: Rising Stars of the Season",
-    excerpt:
-      "Breaking down the performance of this season's breakout players...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Player Analysis",
-    author: "Maria Rodriguez",
-    date: "April 10, 2025",
-  },
-  {
-    id: 3,
-    title: "Playoff Picture: Who's In, Who's Out",
-    excerpt:
-      "Analyzing team standings and playoff scenarios as the regular season winds down...",
-    imageUrl: "/placeholder-article.jpg",
-    category: "Playoffs",
-    author: "Derek Wilson",
-    date: "April 8, 2025",
-  },
-];
+import { mockArticles } from "@/src/app/data/mockdata"; 
 
 const RecentArticles = () => {
   return (
@@ -51,7 +19,7 @@ const RecentArticles = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {mockArticles.map((article) => (
+          {mockArticles.slice(0, 3).map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
         </div>
