@@ -1,10 +1,9 @@
-// src/app/teams/[id]/page.js
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ArticleCard from "@/src/components/Articles/ArticleCard";
 
-// Mock data for teams
+// Mock data for team details
 const teams = [
   {
     id: 1,
@@ -13,22 +12,50 @@ const teams = [
     record: "48-20",
     conference: "West",
     division: "Northwest",
-    logo: "/images/teams/thunder.jpg",
+    logo: "https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&q=80",
     description:
       "The Oklahoma City Thunder have been a surprise contender this season, with their young core developing faster than expected. Led by their dynamic guard play and improved defense, they have established themselves as one of the top teams in the Western Conference.",
   },
+];
+
+// Mock data for players
+const players = [
   {
-    id: 2,
-    name: "Grizzlies",
-    fullName: "Memphis Grizzlies",
-    record: "42-26",
-    conference: "West",
-    division: "Southwest",
-    logo: "/images/teams/grizzlies.jpg",
-    description:
-      'The Memphis Grizzlies continue to embody their "Grit and Grind" mentality, combining physical defense with explosive offense. Despite dealing with injuries to key players, they remain a formidable opponent and are positioned for another playoff run.',
+    name: "Marcus Thompson",
+    number: 1,
+    position: "Point Guard",
+    imageUrl:
+      "https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&q=80",
+    stats: {
+      ppg: 24.6,
+      rpg: 5.2,
+      apg: 7.8,
+    },
   },
-  // Add more team data as needed
+  {
+    name: "David Williams",
+    number: 14,
+    position: "Shooting Guard",
+    imageUrl:
+      "https://images.unsplash.com/photo-1627627256476-12a3daa084b5?auto=format&fit=crop&q=80",
+    stats: {
+      ppg: 21.3,
+      rpg: 4.4,
+      apg: 3.2,
+    },
+  },
+  {
+    name: "Chris Davis",
+    number: 22,
+    position: "Power Forward",
+    imageUrl:
+      "https://images.unsplash.com/photo-1627627256672-027a4613d028?auto=format&fit=crop&q=80",
+    stats: {
+      ppg: 18.7,
+      rpg: 9.8,
+      apg: 2.1,
+    },
+  },
 ];
 
 // Mock data for related articles
@@ -38,7 +65,8 @@ const relatedArticles = [
     title: "Thunder's Rise: Breaking Down Their Success",
     excerpt:
       "Analyzing how the Thunder have exceeded expectations this season...",
-    imageUrl: "/images/basketball-article-1.jpg",
+    imageUrl:
+      "https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&q=80",
     category: "Analysis",
     author: "James Thompson",
     date: "April 14, 2025",
@@ -48,7 +76,8 @@ const relatedArticles = [
     title: "Key Players to Watch in Upcoming Matchups",
     excerpt:
       "A look at the stars who will determine the outcome of crucial games...",
-    imageUrl: "/images/basketball-article-2.jpg",
+    imageUrl:
+      "https://images.unsplash.com/photo-1627627256476-12a3daa084b5?auto=format&fit=crop&q=80",
     category: "Preview",
     author: "Sarah Chen",
     date: "April 12, 2025",
@@ -57,12 +86,52 @@ const relatedArticles = [
     id: 3,
     title: "Playoff Scenarios: What Each Win Means",
     excerpt: "Breaking down the playoff implications of upcoming games...",
-    imageUrl: "/images/basketball-article-3.jpg",
+    imageUrl:
+      "https://images.unsplash.com/photo-1627627256672-027a4613d028?auto=format&fit=crop&q=80",
     category: "Playoffs",
     author: "Marcus Johnson",
     date: "April 10, 2025",
   },
 ];
+
+const PlayerCard = ({ player }) => (
+  <div className="bg-white dark:bg-darkBlue rounded-lg overflow-hidden shadow-md">
+    <div className="relative h-64 w-full">
+      <Image
+        src={player.imageUrl}
+        alt={player.name}
+        fill
+        className="object-cover object-top"
+      />
+    </div>
+    <div className="p-4">
+      <h3 className="text-xl font-bold mb-1">{player.name}</h3>
+      <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+        #{player.number} | {player.position}
+      </p>
+      <div className="grid grid-cols-3 gap-2 text-center">
+        <div>
+          <p className="text-accent dark:text-accentDark text-xl font-bold">
+            {player.stats.ppg}
+          </p>
+          <p className="text-xs">PPG</p>
+        </div>
+        <div>
+          <p className="text-accent dark:text-accentDark text-xl font-bold">
+            {player.stats.rpg}
+          </p>
+          <p className="text-xs">RPG</p>
+        </div>
+        <div>
+          <p className="text-accent dark:text-accentDark text-xl font-bold">
+            {player.stats.apg}
+          </p>
+          <p className="text-xs">APG</p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export async function generateMetadata({ params }) {
   const team = teams.find((t) => t.id === parseInt(params.id)) || {
@@ -158,118 +227,10 @@ const TeamDetailPage = ({ params }) => {
       <section className="py-12 border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-5 sm:px-10">
           <h2 className="text-3xl font-bold mb-8">Key Players</h2>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white dark:bg-darkBlue rounded-lg overflow-hidden shadow-md">
-              <div className="relative h-64 w-full">
-                <Image
-                  src="/images/player-1.jpg"
-                  alt="Player Name"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-xl font-bold mb-1">Player Name</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                  #1 | Point Guard
-                </p>
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      24.6
-                    </p>
-                    <p className="text-xs">PPG</p>
-                  </div>
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      5.2
-                    </p>
-                    <p className="text-xs">RPG</p>
-                  </div>
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      7.8
-                    </p>
-                    <p className="text-xs">APG</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-darkBlue rounded-lg overflow-hidden shadow-md">
-              <div className="relative h-64 w-full">
-                <Image
-                  src="/images/player-2.jpg"
-                  alt="Player Name"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-xl font-bold mb-1">Player Name</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                  #14 | Shooting Guard
-                </p>
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      21.3
-                    </p>
-                    <p className="text-xs">PPG</p>
-                  </div>
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      4.4
-                    </p>
-                    <p className="text-xs">RPG</p>
-                  </div>
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      3.2
-                    </p>
-                    <p className="text-xs">APG</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-darkBlue rounded-lg overflow-hidden shadow-md">
-              <div className="relative h-64 w-full">
-                <Image
-                  src="/images/player-3.jpg"
-                  alt="Player Name"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-xl font-bold mb-1">Player Name</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                  #22 | Power Forward
-                </p>
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      18.7
-                    </p>
-                    <p className="text-xs">PPG</p>
-                  </div>
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      9.8
-                    </p>
-                    <p className="text-xs">RPG</p>
-                  </div>
-                  <div>
-                    <p className="text-accent dark:text-accentDark text-xl font-bold">
-                      2.1
-                    </p>
-                    <p className="text-xs">APG</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {players.map((player, index) => (
+              <PlayerCard key={index} player={player} />
+            ))}
           </div>
         </div>
       </section>
@@ -278,7 +239,6 @@ const TeamDetailPage = ({ params }) => {
       <section className="py-12">
         <div className="container mx-auto px-5 sm:px-10">
           <h2 className="text-3xl font-bold mb-8">Related Articles</h2>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {relatedArticles.map((article) => (
               <ArticleCard key={article.id} article={article} />

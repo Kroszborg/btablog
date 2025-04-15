@@ -9,7 +9,10 @@ const TeamCard = ({ team }) => {
       <div className="bg-darkBlue rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
         <div className="relative h-48 w-full">
           <Image
-            src={team.logo}
+            src={
+              team.imageUrl ||
+              "https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&q=80"
+            }
             alt={`${team.name} team`}
             fill
             className="object-cover object-center"

@@ -12,7 +12,7 @@ const TeamOfTheWeek = () => {
         <div className="bg-darkBlue rounded-lg overflow-hidden shadow-lg">
           <div className="relative h-64 w-full">
             <Image
-              src="https://images.unsplash.com/photo-1613676023829-a881beec0a73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1649&q=80"
+              src="https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&q=80"
               alt="Cleveland Cavaliers"
               fill
               className="object-cover object-center"
