@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { DribbbleIcon, GithubIcon, LinkedinIcon, TwitterIcon } from "../Icons";
+import { TwitterIcon, InstagramIcon, YoutubeIcon } from "../Icons";
 import Link from "next/link";
-import siteMetadata from "@/src/utils/siteMetaData";
 
 const Footer = () => {
   const {
@@ -12,88 +11,112 @@ const Footer = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
-  console.log(errors);
 
   return (
-    <footer className="mt-16 rounded-2xl bg-dark dark:bg-accentDark/90 m-2 sm:m-10 flex flex-col items-center text-light dark:text-dark">
-      <h3 className="mt-16 font-medium dark:font-bold text-center capitalize text-2xl sm:text-3xl lg:text-4xl px-4">
-        Interesting Stories | Updates | Guides
-      </h3>
-      <p className="mt-5 px-4 text-center w-full sm:w-3/5 font-light dark:font-medium text-sm sm:text-base">
-        Subscribe to learn about new technology and updates. Join over 5000+
-        members community to stay up to date with latest news.
-      </p>
-
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="mt-6 w-fit sm:min-w-[384px] flex items-stretch bg-light dark:bg-dark p-1 sm:p-2 rounded mx04"
-      >
-        <input
-          type="email"
-          placeholder="Enter your email"
-          {...register("email", { required: true, maxLength: 80 })}
-          className="w-full bg-transparent pl-2 sm:pl-0 text-dark focus:border-dark focus:ring-0 border-0 border-b mr-2 pb-1"
-        />
-
-        <input
-          type="submit"
-          className="bg-dark text-light dark:text-dark dark:bg-light cursor-pointer font-medium rounded px-3 sm:px-5 py-1"
-        />
-      </form>
-      <div className="flex items-center mt-8">
-        <a
-          href={siteMetadata.linkedin}
-          className="inline-block w-6 h-6 mr-4"
-          aria-label="Reach out to me via LinkedIn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <LinkedinIcon className="hover:scale-125 transition-all ease duration-200" />
-        </a>
-        <a
-          href={siteMetadata.twitter}
-          className="inline-block w-6 h-6 mr-4"
-          aria-label="Reach out to me via Twitter"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
-        </a>
-        <a
-          href={siteMetadata.github}
-          className="inline-block w-6 h-6 mr-4 fill-light"
-          aria-label="Check my profile on Github"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <GithubIcon className="fill-light dark:fill-dark  hover:scale-125 transition-all ease duration-200" />
-        </a>
-        <a
-          href={siteMetadata.dribbble}
-          className="inline-block w-6 h-6 mr-4"
-          aria-label="Check my profile on Dribbble"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <DribbbleIcon className="hover:scale-125 transition-all ease duration-200" />
-        </a>
-      </div>
-
-      <div className="w-full  mt-16 md:mt-24 relative font-medium border-t border-solid border-light py-6 px-8 flex  flex-col md:flex-row items-center justify-between">
-        <span className="text-center">
-          &copy;2023 CodeBucks. All rights reserved.
-        </span>
-        <Link
-          href="/sitemap.xml"
-          className="text-center underline my-4 md:my-0"
-        >
-          sitemap.xml
-        </Link>
-        <div className="text-center">
-          Made with &hearts; by{" "}
-          <a href="https://devdreaming.com" className="underline" target="_blank">
-            CodeBucks
-          </a>
+    <footer className="w-full bg-dark text-light py-8">
+      <div className="container mx-auto px-5 sm:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 className="text-xl font-bold mb-4">Beyond the Arc</h3>
+            <p className="text-sm mb-4">
+              Your premier source for NBA basketball news, analysis, and insights.
+            </p>
+            <div className="flex items-center space-x-4">
+              <a
+                href="https://twitter.com/beyondthearc"
+                className="hover:text-accent transition-colors"
+                aria-label="Follow us on Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <TwitterIcon className="w-5 h-5" />
+              </a>
+              <a
+                href="https://instagram.com/beyondthearc"
+                className="hover:text-accent transition-colors"
+                aria-label="Follow us on Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <InstagramIcon className="w-5 h-5" />
+              </a>
+              <a
+                href="https://youtube.com/beyondthearc"
+                className="hover:text-accent transition-colors"
+                aria-label="Subscribe on YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <YoutubeIcon className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/" className="hover:text-accent transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/articles" className="hover:text-accent transition-colors">
+                  Articles
+                </Link>
+              </li>
+              <li>
+                <Link href="/teams" className="hover:text-accent transition-colors">
+                  Teams
+                </Link>
+              </li>
+              <li>
+                <Link href="/stats-hub" className="hover:text-accent transition-colors">
+                  Stats Hub
+                </Link>
+              </li>
+              <li>
+                <Link href="/about-us" className="hover:text-accent transition-colors">
+                  About Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-xl font-bold mb-4">Newsletter</h3>
+            <p className="text-sm mb-4">
+              Subscribe to our newsletter for the latest news and updates.
+            </p>
+            <form onSubmit={handleSubmit(onSubmit)} className="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                {...register("email", { required: true })}
+                className="bg-dark border border-light/30 rounded-l px-4 py-2 w-full focus:outline-none focus:border-accent"
+              />
+              <button
+                type="submit"
+                className="bg-accent text-light px-4 py-2 rounded-r font-medium hover:bg-accentDark transition-colors"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+        
+        <div className="border-t border-light/20 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} Beyond the Arc. All rights reserved.
+          </p>
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            <Link href="/sitemap" className="text-sm hover:text-accent transition-colors">
+              Sitemap
+            </Link>
+            <Link href="/disclaimer" className="text-sm hover:text-accent transition-colors">
+              Disclaimer
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

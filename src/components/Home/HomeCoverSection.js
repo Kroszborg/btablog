@@ -1,49 +1,45 @@
-import { sortBlogs } from '@/src/utils'
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react'
-import Tag from '../Elements/Tag';
-import { slug } from 'github-slugger';
+import React from "react";
+import Link from "next/link";
 
-const HomeCoverSection = ({blogs}) => {
-
-    const sortedBlogs = sortBlogs(blogs);
-    const blog = sortedBlogs[0];
-
+const HomeCoverSection = () => {
   return (
-    <div className='w-full inline-block'>
-        <article className='flex flex-col items-start justify-end mx-5 sm:mx-10 relative h-[60vh] sm:h-[85vh]'>
-            <div className='absolute top-0 left-0 bottom-0 right-0 h-full
-            bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-3xl z-0
-            ' />
-        <Image src={blog.image.src}
-        placeholder='blur'
-        blurDataURL={blog.image.blurDataURL}
-        alt={blog.title}
-        fill
-        className='w-full h-full object-center object-cover rounded-3xl -z-10'
-        sizes='100vw'
-        priority
-        />
+    <section className="w-full min-h-[70vh] bg-dark text-light flex items-center relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-dark/90 z-10"></div>
 
-        <div className='w-full lg:w-3/4 p-6 sm:p-8 md:p-12  lg:p-16 flex flex-col items-start justify-center z-0 text-light'>
-            <Tag link={`/categories/${slug(blog.tags[0])}`} name={blog.tags[0]} />
-            <Link href={blog.url} className='mt-6'>
-            <h1 className='font-bold capitalize text-lg sm:text-xl md:text-3xl lg:text-4xl'>
-                <span className='bg-gradient-to-r from-accent to-accent dark:from-accentDark/50 
-                dark:to-accentDark/50 bg-[length:0px_6px]
-                hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 '>
-                {blog.title}
-                </span>
-            </h1>
+      {/* Replace with actual background image */}
+      <div
+        className="absolute inset-0 bg-[url('/placeholder-basketball.jpg')] bg-cover bg-center"
+        style={{ opacity: 0.6 }}
+      ></div>
+
+      <div className="container mx-auto px-5 sm:px-10 z-20 py-16">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Beyond the Arc
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-light/90">
+            Your premiere source for NBA analysis, player stats, and team
+            insights. Dive deep into the world of basketball with our expert
+            coverage.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/articles"
+              className="px-8 py-3 bg-accent text-light rounded-lg font-medium hover:bg-accentDark transition-colors"
+            >
+              Latest Articles
             </Link>
-            <p className='hidden  sm:inline-block mt-4 md:text-lg lg:text-xl font-in'>
-                {blog.description}
-            </p>
+            <Link
+              href="/stats-hub"
+              className="px-8 py-3 border-2 border-light text-light rounded-lg font-medium hover:bg-light/10 transition-colors"
+            >
+              Stats Hub
+            </Link>
+          </div>
         </div>
-    </article>
-    </div>
-  )
-}
+      </div>
+    </section>
+  );
+};
 
-export default HomeCoverSection
+export default HomeCoverSection;

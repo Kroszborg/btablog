@@ -1,14 +1,17 @@
-import {blogs} from "@/.velite/generated";
+import React from "react";
+import TeamList from "../components/Teams/TeamList";
+import TeamOfTheWeek from "../components/Teams/TeamOfTheWeek";
 import HomeCoverSection from "../components/Home/HomeCoverSection";
-import FeaturedPosts from "../components/Home/FeaturedPosts";
-import RecentPosts from "../components/Home/RecentPosts";
+import RecentArticles from "../components/Home/RecentArticles";
+import NBATeams from "../components/Teams/NBATeams";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center">
-      <HomeCoverSection blogs={blogs} />
-      <FeaturedPosts blogs={blogs} />
-      <RecentPosts blogs={blogs} />
+      <HomeCoverSection />
+      <TeamOfTheWeek />
+      <NBATeams />
+      <RecentArticles />
     </main>
-  )
+  );
 }
