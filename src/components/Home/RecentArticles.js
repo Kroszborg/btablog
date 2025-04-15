@@ -2,7 +2,7 @@
 import React from "react";
 import ArticleCard from "../Articles/ArticleCard";
 import Link from "next/link";
-import { mockArticles } from "@/src/app/data/mockdata"; 
+import { mockArticles } from "@/src/data/mockData";
 
 const RecentArticles = () => {
   return (

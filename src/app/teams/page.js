@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import TeamCard from "@/src/components/Teams/TeamCard";
-import { westernTeams, easternTeams } from "@/src/app/data/mockdata";
+import { westernTeams, easternTeams } from "@/src/data/mockData";
 
 export const metadata = {
   title: "NBA Teams | Beyond the Arc",

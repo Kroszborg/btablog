@@ -3,7 +3,7 @@ import React from "react";
 import ArticleCard from "@/src/components/Articles/ArticleCard";
 import Link from "next/link";
 import Image from "next/image";
-import { mockArticles } from "@/src/app/data/mockdata";
+import { mockArticles } from "@/src/data/mockData";
 
 // Categories for filtering
 const categories = [
